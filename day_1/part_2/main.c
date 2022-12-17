@@ -3,6 +3,24 @@
 
 #define MAX 1000
 
+void swap(int arr[], int i, int j){
+    int tmp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = tmp; 
+}
+
+void order_array(int arr[], int sz){
+    int i = 0;
+    while(i < sz){
+        for(int j = i; j < sz; j++){
+            if(arr[j] > arr[i]){
+                swap(arr, i, j);
+            }
+        }
+        i++;
+    }
+}
+
 int main(int argc, char** argv){
     if(argc != 2){
         exit(EXIT_FAILURE);
@@ -23,12 +41,8 @@ int main(int argc, char** argv){
         }
     }
     i++;
-    int max_cal = 0;
-    for(int j = 0; j < i; j++){
-        if(cals[j] > max_cal){
-            max_cal = cals[j];
-        }
-    }
+    order_array(cals, i);
+    int max_cal = cals[0] + cals[1] + cals[2];
     printf("%d\n", max_cal);
     fclose(pfile);
     return EXIT_SUCCESS;
