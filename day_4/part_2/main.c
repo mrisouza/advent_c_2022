@@ -29,18 +29,17 @@ int main(int argc, char** argv){
 }
 
 bool is_subset(int l_1, int u_1, int l_2, int u_2){
-    if(l_1 >= l_2){
-        int tmp = l_1;
-        l_1 = l_2;
-        l_2 = tmp;
-    }
-    if(u_1 >= u_2){
-        int tmp = u_2;
-        u_2 = u_1;
-        u_1 = tmp;
-    }
-    if(u_1 <= l_2){
+    if((l_2 < l_1) && (u_2 < l_1)){
         return false;
-    } 
+    }
+    if((l_2 > u_1) && (u_2 > u_1)){
+        return false;
+    }
+    if((l_1 < l_2) && (u_1 < l_2)){
+        return false;
+    }
+    if((l_1 > u_2) && (u_1 > u_2)){
+        return false;
+    }
     return true;
 }
