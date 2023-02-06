@@ -12,9 +12,9 @@ int main(int argc, char** argv){
     while(fgets(line, MAX, pfile) != NULL){
         int type_of_line = treat_line(line);
         if(type_of_line == COMMAND){
-            printf("Linha de comando.\n");
+            printf("command line.\n");
         } else {
-            printf("Não é linha de comando.\n");
+            printf("not command line.\n");
         }
     }
     
